@@ -13,9 +13,9 @@ export default function AnnouncementBar() {
       </Marquee>
 
       <div className="w-1/2 hidden md:flex items-center justify-end shrink-0">
-        <Link href="/admissions" className="text-white underline">Admissions Open 2026</Link>
-        <Link href="/contact" className="text-white underline ml-4">Contact Us</Link>
-        <Link href="/about" className="text-white underline ml-4">About Us</Link>
+        <Link href="/admissions" className="text-white border-r px-2 border-white/60 ">Admissions Open 2026</Link>
+        <Link href="/contact" className="text-white border-r px-2 border-white/60 ">Contact Us</Link>
+        <Link href="/about" className="text-white ml-4">About Us</Link>
       </div>
     </div>
   );
