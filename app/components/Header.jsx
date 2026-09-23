@@ -12,7 +12,7 @@ export default function Header() {
           <header-logo className="flex page-width items-center justify-between text-2xl font-bold">
             <div className="flex items-center gap-2">
               <Image src="/logo-v1.png" alt="College Logo" width={80} height={80} />
-              <h1 className="text-lg font-bold">Pachamuthu Group of Institutions </h1>
+              <h1 className="text-lg font-bold tracking-[0.07em] uppercase">Pachamuthu Group of Institutions </h1>
             </div>
             <div className="flex items-center gap-4">
               <SocialMedia />
