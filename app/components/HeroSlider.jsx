@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getImageProps } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,54 +19,70 @@ const AUTOPLAY_DELAY = 6000;
  */
 const slides = [
   {
-    id: "admissions",
-    label: "Admissions",
+    id: "arts-science",
+    label: "Arts & Science",
     image: { desktop: "/college-slide-1.webp", mobile: "/college-slide-1.webp" },
     focus: "50% 35%",
     alt: "Students walking together outside the main academic block",
-    title: "Admissions for 2027–28 are open",
+    titlePrefix: "Pachamuthu College of",
+    title: "Arts & Science",
     description:
       "Undergraduate and postgraduate programmes across our colleges. Send an enquiry and our admissions team will call you back.",
     primary: { text: "Send an enquiry", href: "/#contact" },
     secondary: { text: "Call admissions", href: "tel:+910000000000" },
   },
   {
-    id: "colleges",
-    label: "Our colleges",
+    id: "pharmacy",
+    label: "Pharmacy",
     image: { desktop: "/college-slide-2.webp", mobile: "/college-slide-2.webp" },
     focus: "50% 50%",
     alt: "Aerial view of the college campus buildings",
-    title: "Five colleges, one campus community",
+    titlePrefix: "Pachamuthu College of",
+    title: "Pharmacy",
     description:
       "Engineering, arts and science, management and more. Compare our institutions and find the right fit.",
     primary: { text: "Explore colleges", href: "/#institutions" },
     secondary: { text: "View courses", href: "/#courses" },
   },
   {
-    id: "placements",
-    label: "Placements",
+    id: "nursing",
+    label: "Nursing",
     image: { desktop: "/college-slide-3.webp", mobile: "/college-slide-3.webp" },
     focus: "60% 40%",
     alt: "Final-year students in formal wear at a campus recruitment drive",
-    title: "Career training from the first year",
+    titlePrefix: "Pachamuthu College of",
+    title: "Nursing",
     description:
       "Aptitude training, soft skills, internships and campus recruitment drives, run by a dedicated placement cell.",
     primary: { text: "See placement support", href: "/#placements" },
     secondary: { text: "View courses", href: "/#courses" },
   },
   {
-    id: "campus",
-    label: "Campus life",
+    id: "physiotherapy",
+    label: "Physiotherapy",
     image: { desktop: "/college-slide-4.webp", mobile: "/college-slide-4.webp" },
     focus: "40% 50%",
     alt: "Students studying in the college library",
-    title: "Labs, library, hostels and sports",
+    titlePrefix: "Pachamuthu College of",
+    title: "Physiotherapy",
     description:
       "Everything students need to learn and live well, all on one campus. Take a look around.",
     primary: { text: "View facilities", href: "/#facilities" },
     secondary: { text: "Open gallery", href: "/#gallery" },
   },
 ];
+
+function AnimatedWords({ text, className = "" }) {
+  return text.split(" ").map((word, i) => (
+    <Fragment key={i}>
+      <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+        <span data-word className={`inline-block will-change-transform ${className}`}>
+          {word}
+        </span>
+      </span>{" "}
+    </Fragment>
+  ));
+}
 
 const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
@@ -208,17 +224,11 @@ export default function HeroSlider() {
 
                 <div className="relative z-10 mx-auto flex h-full max-w-350 items-end px-5 pb-28 sm:px-8 md:items-center md:px-12 md:pb-0">
                   <div className="slide-content w-full max-w-2xl">
-                    <Heading className="text-[1.5rem] font-extrabold leading-[1.08] tracking-tight sm:text3xl lg:text-5xl lg:leading-[1.02]">
-                      {slide.title.split(" ").map((word, w) => (
-                        <span
-                          key={w}
-                          className="mr-[0.25em] inline-block overflow-hidden pb-[0.08em] align-bottom"
-                        >
-                          <span data-word className="inline-block will-change-transform">
-                            {word}
-                          </span>
-                        </span>
-                      ))}
+                    <Heading className="text-[1.5rem] leading-[1.08] tracking-tight sm:text-3xl lg:text-5xl lg:leading-[1.02]">
+                      {slide.titlePrefix && (
+                        <AnimatedWords text={slide.titlePrefix} className=" font-extrabold text-white" />
+                      )}
+                      <AnimatedWords text={slide.title} className="font-extrabold title-gradient text-white" />
                     </Heading>
 
                     <p

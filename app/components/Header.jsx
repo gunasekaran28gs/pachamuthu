@@ -31,7 +31,7 @@ export default function Header() {
             
           </header-logo> 
         </header>
-        <header-nav className="bg-[#00468B] text-sm text-white px-2 py-1">
+        <header-nav className="bg-[#00468B] border-t border-t-[#f7941d] text-sm text-white px-2 py-1">
           <NavigationMenuDemo />
         </header-nav>
     </>

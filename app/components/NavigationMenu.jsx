@@ -3,11 +3,27 @@
 import * as React from "react"
 import Link from "next/link"
 import {
+  QuoteIcon,
+  TargetIcon,
+  UserIcon,
+  HeartHandshakeIcon,
+  BriefcaseIcon,
+  GraduationCapIcon,
   CircleAlertIcon,
   CircleCheckIcon,
   CircleDashedIcon,
 } from "lucide-react"
 
+import {
+  BookOpenIcon,
+  PillIcon,
+  HeartPulseIcon,
+  PersonStandingIcon,
+  SchoolIcon,
+  MicroscopeIcon,
+} from "lucide-react"
+
+import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -18,39 +34,72 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-const components = [
+/* ------------------------------------------------------------------ */
+/* Main menu underline animation                                        */
+/* - Idle:   scale-x-0 with origin-right                                */
+/* - Hover:  scale-x-100 with origin-left  -> fills left to right       */
+/* - Leave:  origin flips back to right    -> removes left to right     */
+/* - Open:   stays underlined while the submenu is open (Base UI sets   */
+/*           data-popup-open on the trigger)                            */
+/* ------------------------------------------------------------------ */
+const mainUnderline = cn(
+  "relative",
+  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full",
+  "after:bg-[#f7941d] after:content-['']",
+  "after:origin-right after:scale-x-0",
+  "after:transition-transform after:duration-300 after:ease-out",
+  "hover:after:origin-left hover:after:scale-x-100",
+  "focus-visible:after:origin-left focus-visible:after:scale-x-100",
+  "data-[popup-open]:after:origin-left data-[popup-open]:after:scale-x-100",
+  "motion-reduce:after:transition-none"
+)
+
+const mainItemClass = cn(
+  navigationMenuTriggerStyle(),
+  mainUnderline,
+  "text-white hover:bg-none hover:text-white focus:bg-none focus:text-white",
+  "data-[popup-open]:bg-blue-700 data-[popup-open]:text-white"
+)
+
+// `icon` is optional on every item
+const aboutItems = [
   {
-    title: "Alert Dialog",
+    title: "Chairman's Message",
     href: "/docs/primitives/alert-dialog",
+    icon: QuoteIcon,
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
-    title: "Hover Card",
+    title: "Our Mission & Vision",
     href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    icon: TargetIcon,
+    description: "For sighted users to preview content available behind a link.",
   },
   {
-    title: "Progress",
+    title: "Vice-Chairman's Message",
     href: "/docs/primitives/progress",
+    icon: UserIcon,
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
-    title: "Scroll-area",
+    title: "Core Values",
     href: "/docs/primitives/scroll-area",
+    icon: HeartHandshakeIcon,
     description: "Visually or semantically separates content.",
   },
   {
-    title: "Tabs",
+    title: "Managing Director Message",
     href: "/docs/primitives/tabs",
+    icon: BriefcaseIcon,
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
   {
-    title: "Tooltip",
+    title: "Why study with us?",
     href: "/docs/primitives/tooltip",
+    icon: GraduationCapIcon,
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
@@ -61,79 +110,121 @@ export function NavigationMenuDemo() {
     <NavigationMenu className="w-full">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink className={`
-          ${navigationMenuTriggerStyle()}
-          text-white
-          hover:bg-blue-700
-          hover:text-white
-          focus:bg-blue-700
-          focus:text-white
-        `} render={<Link href="/">Home</Link>} />
+          <NavigationMenuLink
+            className={mainItemClass}
+            render={<Link href="/">Home</Link>}
+          />
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="w-96">
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built with Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+
         <NavigationMenuItem className="hidden md:flex">
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger className={mainItemClass}>
+            About Us
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
+            <ul className="grid w-[400px] gap-2 p-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {aboutItems.map((item) => (
                 <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+                  key={item.title}
+                  title={item.title}
+                  href={item.href}
+                  icon={item.icon}
                 >
-                  {component.description}
+                  {item.description}
                 </ListItem>
               ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* Items without icons — icon is optional */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+          <NavigationMenuTrigger className={mainItemClass}>
+            Institutions
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[200px]">
-              <li>
-                <NavigationMenuLink render={<Link href="#" className="flex-row items-center gap-2"><CircleAlertIcon className="text-blue-600" />Backlog</Link>} />
-                <NavigationMenuLink render={<Link href="#" className="flex-row items-center gap-2"><CircleDashedIcon className="text-blue-600" />To Do</Link>} />
-                <NavigationMenuLink render={<Link href="#" className="flex-row items-center gap-2"><CircleCheckIcon className="text-blue-600" />Done</Link>} />
-              </li>
+            <ul className="grid w-72 gap-1 p-2">
+              <ListItem href="/docs" title="College of Arts & Science" icon={BookOpenIcon} />
+              <ListItem href="/docs/installation" title="College of Pharmacy" icon={PillIcon} />
+              <ListItem href="/docs/primitives/typography" title="College of Nursing" icon={HeartPulseIcon} />
+              <ListItem href="/docs/primitives/typography" title="College of Physiotherapy" icon={PersonStandingIcon} />
+              <ListItem href="/docs/primitives/typography" title="College of Education" icon={SchoolIcon} />
+              <ListItem href="/docs/primitives/typography" title="College of Health Sciences" icon={MicroscopeIcon} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* Title-only items with icons (no description) */}
         <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()} render={<Link href="/docs">Docs</Link>} />
+          <NavigationMenuTrigger className={mainItemClass}>
+            Admissions
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[200px] gap-1 p-2">
+              <ListItem href="#" title="Arts & Science" />
+              <ListItem href="#" title="Pharmacy" />
+              <ListItem href="#" title="Nursing" />
+              <ListItem href="#" title="Physiotherapy" />
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={mainItemClass}
+            render={<Link href="/contact">Gallery</Link>}
+          />
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={mainItemClass}
+            render={<Link href="/contact">Career</Link>}
+          />
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            className={mainItemClass}
+            render={<Link href="/contact">Contact Us</Link>}
+          />
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )
 }
 
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}) {
+function ListItem({ title, children, href, icon: Icon, className, ...props }) {
   return (
     <li {...props}>
-      <NavigationMenuLink render={<Link href={href}><div className="flex flex-col gap-1 text-sm">
-          <div className="leading-none font-medium">{title}</div>
-          <div className="line-clamp-2 text-muted-foreground">{children}</div>
-        </div></Link>} />
+      <NavigationMenuLink
+        className={cn(
+          "group flex-row items-start gap-3 rounded-md p-3",
+          // 1px left border, rounded by rounded-md, visible only on hover/focus
+          "border-l-2 border-transparent transition-colors duration-200",
+          "hover:border-[#f7941d] hover:bg-blue-50",
+          "focus:border-[#f7941d] focus:bg-blue-50",
+          className
+        )}
+        render={
+          <Link href={href}>
+            {Icon && (
+              <Icon
+                aria-hidden="true"
+                className="mt-0.5 size-4 shrink-0 text-[#f7941d] transition-colors group-hover:text-[#f7941d] group-focus:text-[#f7941d]"
+              />
+            )}
+            <div className="flex flex-col gap-1 text-sm">
+              <div className="leading-none font-semibold text-blue-950 transition-colors group-hover:text-[#f7941d] group-focus:text-[#f7941d]">
+                {title}
+              </div>
+              {children && (
+                <div className="line-clamp-2 leading-snug text-slate-500">
+                  {children}
+                </div>
+              )}
+            </div>
+          </Link>
+        }
+      />
     </li>
   )
 }
