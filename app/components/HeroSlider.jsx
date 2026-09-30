@@ -186,7 +186,7 @@ export default function HeroSlider() {
     <section
       aria-roledescription="carousel"
       aria-label="Highlights"
-      className="relative h-[88svh] min-h-[560px] w-full overflow-hidden bg-slate-950 text-white md:h-[90svh] md:max-h-[920px]"
+      className="relative h-[68svh] min-h-[560px] w-full overflow-hidden bg-slate-950 text-white md:h-[90svh] md:max-h-[920px]"
     >
       <Swiper
         modules={[Autoplay, EffectFade, Keyboard, A11y]}
@@ -199,7 +199,7 @@ export default function HeroSlider() {
         autoplay={{
           delay: AUTOPLAY_DELAY,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true,
+          pauseOnMouseEnter: false,
         }}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={handleSlideChange}
