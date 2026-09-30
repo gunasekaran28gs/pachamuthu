@@ -157,7 +157,7 @@ export default function StatsCounter({ title = "Academic Achievers 2025 Exams" }
                 </p>
                 <p
                   data-label
-                  className="mt-3 max-w-[15rem] text-sm leading-snug text-[#0A2146]/70 sm:text-base"
+                  className="mt-3 max-w-[15rem] text-[12px] leading-snug text-[#0A2146]/70 sm:text-base"
                 >
                   {label}
                 </p>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import HeroSlider from "./components/HeroSlider";
 import AboutHome from "./components/AboutHome";
 import StatsCounter from "./components/StatsCounter";
+import WhyChooseUs from "./components/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <HeroSlider />
         <AboutHome />
         <StatsCounter />
+        <WhyChooseUs />
         <div className="relative w-full h-[550px]">
           <Image
             src="/college-slide-1.webp"
