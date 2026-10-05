@@ -3,6 +3,8 @@ import HeroSlider from "./components/HeroSlider";
 import AboutHome from "./components/AboutHome";
 import StatsCounter from "./components/StatsCounter";
 import WhyChooseUs from "./components/WhyChooseUs";
+import FindYourProgram from "./components/FindYourProgram";
+import ContactHome from "./components/ContactHome";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
             className="object-cover"
           />
         </div>
+        <FindYourProgram />
+        <ContactHome />
         
         
       </main>

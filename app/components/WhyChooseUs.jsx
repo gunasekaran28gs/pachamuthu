@@ -47,7 +47,7 @@ export default function WhyChooseUs({
   features = defaultFeatures,
 }) {
   return (
-    <section className="w-full bg-[#f0f4f8] py-12 md:py-20">
+    <section className="w-full bg-[#F0F4FF] py-12 md:py-20">
       <WhyChooseUsAnimation className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Card className="relative gap-0 overflow-hidden rounded-3xl border border-slate-200/80 bg-white px-5 py-12 shadow-sm sm:px-8 md:py-14 lg:px-10">
           {/* Top gradient bar */}
