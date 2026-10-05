@@ -209,7 +209,7 @@ export default function FindYourProgram({
 
                   {/* Body */}
                   <div className="flex flex-1 flex-col px-6 pb-6 pt-10">
-                    {(est || seats) && (
+                    {/* {(est || seats) && (
                       <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
                         {est && (
                           <span className="inline-flex items-center gap-2">
@@ -224,7 +224,7 @@ export default function FindYourProgram({
                           </span>
                         )}
                       </div>
-                    )}
+                    )} */}
 
                     <h3 className="mt-4 text-xl font-bold leading-snug text-blue-900">{title}</h3>
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-slate-600">
