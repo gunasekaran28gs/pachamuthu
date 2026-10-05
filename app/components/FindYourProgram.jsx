@@ -167,7 +167,7 @@ export default function FindYourProgram({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div data-anim="header" className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#E9A92B]">{eyebrow}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#f7941d]">{eyebrow}</p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-blue-900 sm:text-4xl">
             {title}
           </h2>
@@ -193,7 +193,7 @@ export default function FindYourProgram({
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                         />
                       </div>
-                      <span className="absolute right-4 top-4 rounded-full bg-[#2B2A57]/90 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#F5C542] backdrop-blur-sm">
+                      <span className="absolute right-4 top-4 rounded-full bg-[#2B2A57]/90 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#f7941d] backdrop-blur-sm">
                         {code}
                       </span>
                     </div>
@@ -201,7 +201,7 @@ export default function FindYourProgram({
                     {/* Icon overlapping the image edge */}
                     <span
                       data-anim="icon"
-                      className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A2146] text-[#F5C542] shadow-md ring-4 ring-white transition-colors duration-300 group-hover:bg-[#E9A92B] group-hover:text-[#0A2146]"
+                      className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A2146] text-[#f7941d] shadow-md ring-4 ring-white transition-colors duration-300 group-hover:bg-[#f7941d] group-hover:text-[#0A2146]"
                     >
                       <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.8} />
                     </span>
