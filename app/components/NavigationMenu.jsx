@@ -148,7 +148,7 @@ export function NavigationMenuDemo() {
               <ListItem href="/docs/primitives/typography" title="College of Nursing" icon={HeartPulseIcon} />
               <ListItem href="/docs/primitives/typography" title="College of Physiotherapy" icon={PersonStandingIcon} />
               <ListItem href="/docs/primitives/typography" title="College of Education" icon={SchoolIcon} />
-              <ListItem href="/docs/primitives/typography" title="College of Health Sciences" icon={MicroscopeIcon} />
+              <ListItem href="/docs/primitives/typography" title="Pachamuthu Padasala" icon={MicroscopeIcon} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -164,6 +164,7 @@ export function NavigationMenuDemo() {
               <ListItem href="#" title="Pharmacy" />
               <ListItem href="#" title="Nursing" />
               <ListItem href="#" title="Physiotherapy" />
+              <ListItem href="#" title="Pachamuthu Padasala" />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
